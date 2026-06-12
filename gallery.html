@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery | AG Electric Works</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --blue: #1a3fcc;
+            --blue-bright: #2b52e8;
+            --blue-glow: #3a6aff;
+            --blue-light: #4d7fff;
+            --blue-pale: #8aabff;
+            --dark: #060a14;
+            --dark-2: #0b1020;
+            --dark-3: #0f1830;
+            --dark-4: #131e3a;
+            --dark-5: #1a2545;
+            --text: #c8d6f0;
+            --text-dim: #7a92c0;
+            --white: #e8eeff;
+            --accent: #00cfff;
+            --gold: #f0b400;
+        }
+        
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--dark);
+            color: var(--text);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.5;
+        }
+        /* ===== HEADER ===== */
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            background: rgba(6, 10, 20, 0.92);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(42, 82, 232, 0.3);
+            padding: 0 3rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 52px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(42, 82, 232, 0.6));
+        }
+        
+        .brand-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            color: var(--white);
+            line-height: 1;
+        }
+        
+        .brand-sub {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            color: var(--blue-pale);
+            text-transform: uppercase;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1px solid rgba(42, 82, 232, 0.5);
+            color: var(--blue-pale);
+            text-decoration: none;
+            padding: 0.5rem 1.4rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: var(--blue);
+            color: var(--white);
+            border-color: var(--blue-bright);
+            box-shadow: 0 0 20px rgba(42, 82, 232, 0.4);
+        }
+        /* ===== HERO ===== */
+        
+        .gallery-hero {
+            min-height: 42vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 3rem 4rem;
+            background: radial-gradient(ellipse 60% 70% at 70% 50%, rgba(26, 63, 204, 0.18) 0%, transparent 70%), linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
+        }
+        
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(42, 82, 232, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(42, 82, 232, 0.07) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 80% at 60% 50%, black 30%, transparent 80%);
+        }
+        
+        .bolt-deco {
+            position: absolute;
+            opacity: 0.06;
+            color: var(--blue-bright);
+        }
+        
+        .bolt-1 {
+            top: 10%;
+            right: 5%;
+            font-size: 260px;
+            transform: rotate(-15deg);
+            animation: pulse-bolt 4s ease-in-out infinite;
+        }
+        
+        .bolt-2 {
+            bottom: 5%;
+            left: 2%;
+            font-size: 160px;
+            transform: rotate(20deg);
+            animation: pulse-bolt 6s ease-in-out infinite 2s;
+        }
+        
+        @keyframes pulse-bolt {
+            0%,
+            100% {
+                opacity: 0.04
+            }
+            50% {
+                opacity: 0.10
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        
+        .section-label {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            color: var(--blue-pale);
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--blue-bright);
+            box-shadow: 0 0 8px var(--blue-bright);
+        }
+        
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-title .highlight {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--blue-bright);
+            text-shadow: 0 0 40px rgba(42, 82, 232, 0.5);
+        }
+        
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            max-width: 520px;
+        }
+        /* ===== ELEC DIVIDER ===== */
+        
+        .elec-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blue-bright), var(--accent), var(--blue-bright), transparent);
+            box-shadow: 0 0 15px rgba(42, 82, 232, 0.4);
+        }
+        /* ===== FEATURED SLIDER ===== */
+        
+        .featured-section {
+            background: var(--dark-2);
+            padding: 5rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        }
+        
+        .featured-header {
+            padding: 0 3rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .slide-controls {
+            display: flex;
+            gap: 0.6rem;
+        }
+        
+        .slide-btn {
+            background: transparent;
+            border: 1px solid rgba(42, 82, 232, 0.4);
+            color: var(--text-dim);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+            transition: all 0.25s;
+        }
+        
+        .slide-btn:hover {
+            border-color: var(--blue-bright);
+            color: var(--white);
+            box-shadow: 0 0 15px rgba(42, 82, 232, 0.3);
+        }
+        
+        .slider-viewport {
+            overflow: hidden;
+            padding: 0 3rem;
+            position: relative;
+        }
+        
+        .slider-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .slide-card {
+            flex-shrink: 0;
+            width: calc((100% - 3rem) / 3);
+            background: var(--dark-4);
+            border: 1px solid rgba(42, 82, 232, 0.2);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+            overflow: hidden;
+            transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+            cursor: pointer;
+        }
+        
+        .slide-card:hover {
+            border-color: rgba(42, 82, 232, 0.7);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(42, 82, 232, 0.25);
+        }
+        
+        .slide-card-img {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: var(--dark-5);
+            border-bottom: 1px solid rgba(42, 82, 232, 0.15);
+        }
+        
+        .slide-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.75);
+        }
+        
+        .slide-card:hover .slide-card-img img {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+        
+        .slide-card-img::after {
+            content: '🔍';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: rgba(26, 63, 204, 0);
+            opacity: 0;
+            transition: all 0.35s;
+        }
+        
+        .slide-card:hover .slide-card-img::after {
+            background: rgba(26, 63, 204, 0.25);
+            opacity: 1;
+        }
+        
+        .slide-tag {
+            position: absolute;
+            top: 0.7rem;
+            left: 0.7rem;
+            background: rgba(42, 82, 232, 0.85);
+            border: 1px solid rgba(42, 82, 232, 0.9);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            padding: 0.25rem 0.6rem;
+            text-transform: uppercase;
+            z-index: 2;
+            backdrop-filter: blur(4px);
+        }
+        
+        .slide-year {
+            position: absolute;
+            bottom: 0.7rem;
+            right: 0.7rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            z-index: 2;
+        }
+        
+        .slide-card-body {
+            padding: 1rem 1.2rem 0.6rem;
+            border-bottom: 1px solid rgba(42, 82, 232, 0.1);
+        }
+        
+        .slide-card-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
+        
+        .slide-card-info {
+            padding: 0.7rem 1.2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        
+        .gp-item {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            padding: 0.35rem 0.7rem;
+            background: rgba(42, 82, 232, 0.05);
+            border-left: 2px solid rgba(42, 82, 232, 0.3);
+            letter-spacing: 0.5px;
+            transition: all 0.25s;
+        }
+        
+        .gp-item:hover {
+            color: var(--white);
+            border-left-color: var(--blue-bright);
+            background: rgba(42, 82, 232, 0.12);
+            padding-left: 1rem;
+        }
+        /* Slider dots */
+        
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 0 3rem;
+        }
+        
+        .dot {
+            width: 24px;
+            height: 3px;
+            background: rgba(42, 82, 232, 0.25);
+            cursor: pointer;
+            transition: all 0.3s;
+            clip-path: polygon(2px 0%, 100% 0%, calc(100% - 2px) 100%, 0% 100%);
+        }
+        
+        .dot.active {
+            background: var(--blue-bright);
+            width: 40px;
+            box-shadow: 0 0 8px var(--blue-glow);
+        }
+        /* ===== MASONRY / ALL PROJECTS ===== */
+        
+        .all-section {
+            background: var(--dark-3);
+            padding: 5rem 3rem;
+            position: relative;
+        }
+        
+        .all-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        }
+        
+        .all-header {
+            margin-bottom: 3rem;
+        }
+        
+        .masonry-grid {
+            columns: 3;
+            column-gap: 1.5rem;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            background: var(--dark-4);
+            border: 1px solid rgba(42, 82, 232, 0.2);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+        }
+        
+        .masonry-item:hover {
+            border-color: rgba(7, 12, 30, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(42, 82, 232, 0.2);
+        }
+        
+        .masonry-img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.75);
+        }
+        
+        .masonry-item:hover .masonry-img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+        
+        .masonry-img-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .masonry-img-wrap::after {
+            content: '🔍';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: rgba(26, 63, 204, 0);
+            opacity: 0;
+            transition: all 0.35s;
+        }
+        
+        .masonry-item:hover .masonry-img-wrap::after {
+            background: rgba(26, 63, 204, 0.25);
+            opacity: 1;
+        }
+        
+        .masonry-tag {
+            position: absolute;
+            top: 0.6rem;
+            left: 0.6rem;
+            background: rgba(42, 82, 232, 0.85);
+            border: 1px solid rgba(42, 82, 232, 0.9);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            padding: 0.2rem 0.55rem;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        
+        .masonry-body {
+            padding: 0.8rem 1rem 0.9rem;
+        }
+        
+        .masonry-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        
+        .masonry-meta {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+        }
+        /* ===== LIGHTBOX ===== */
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(4, 8, 18, 0.97);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .lightbox.open {
+            display: flex;
+        }
+        
+        .lb-inner {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .lb-img {
+            max-width: 88vw;
+            max-height: 78vh;
+            object-fit: contain;
+            display: block;
+            border: 1px solid rgba(42, 82, 232, 0.3);
+            box-shadow: 0 0 60px rgba(42, 82, 232, 0.2);
+        }
+        
+        .lb-close {
+            position: absolute;
+            top: -44px;
+            right: 0;
+            background: transparent;
+            border: 1px solid rgba(42, 82, 232, 0.3);
+            color: var(--text-dim);
+            font-size: 1.4rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+        }
+        
+        .lb-close:hover {
+            border-color: var(--blue-bright);
+            color: var(--white);
+        }
+        
+        .lb-caption {
+            margin-top: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            text-align: center;
+        }
+        
+        .lb-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(6, 10, 20, 0.85);
+            border: 1px solid rgba(42, 82, 232, 0.3);
+            color: var(--text-dim);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+            transition: all 0.25s;
+        }
+        
+        .lb-nav:hover {
+            border-color: var(--blue-bright);
+            color: var(--white);
+            box-shadow: 0 0 20px rgba(42, 82, 232, 0.3);
+        }
+        
+        .lb-prev {
+            left: -64px;
+        }
+        
+        .lb-next {
+            right: -64px;
+        }
+        
+        .lb-counter {
+            position: absolute;
+            bottom: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+        }
+        /* ===== FOOTER ===== */
+        /* ===== FOOTER ===== */
+        
+        footer {
+            background: var(--dark-2);
+            border-top: 1px solid rgba(42, 82, 232, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--blue), var(--accent), var(--blue), transparent);
+        }
+        
+        .footer-main {
+            padding: 4rem 3rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-brand img {
+            height: 60px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 12px rgba(42, 82, 232, 0.5));
+        }
+        
+        .footer-brand p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 500;
+            max-width: 280px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(42, 82, 232, 0.3);
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a::before {
+            content: '›';
+            color: var(--blue);
+        }
+        
+        .footer-links a:hover {
+            color: var(--blue-pale);
+        }
+        
+        .contact-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            padding: 0.8rem;
+            background: rgba(42, 82, 232, 0.06);
+            border-left: 2px solid var(--blue);
+        }
+        
+        .contact-role {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--blue-pale);
+            text-transform: uppercase;
+        }
+        
+        .contact-name {
+            font-weight: 700;
+            color: var(--white);
+            font-size: 1rem;
+        }
+        
+        .contact-phone {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .contact-email {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+        
+        .license-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .license-item {
+            background: rgba(42, 82, 232, 0.08);
+            border: 1px solid rgba(42, 82, 232, 0.2);
+            padding: 0.4rem 0.8rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .license-item strong {
+            color: var(--blue-pale);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(42, 82, 232, 0.15);
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-bottom p {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+        }
+        
+        .footer-bottom span {
+            color: var(--blue-light);
+        }
+        
+        .footer-social-box {
+            margin-top: 1.5rem;
+        }
+        
+        .footer-social-heading {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: #7a92c0;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-social-heading::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: rgba(42, 82, 232, 0.5);
+        }
+        /* Icons row */
+        
+        .social-icons-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+        /* Each icon button */
+        
+        .soc-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .soc-btn svg {
+            width: 38px;
+            height: 38px;
+        }
+        /* Hover effects per platform */
+        
+        .soc-btn:hover {
+            transform: translateY(-4px);
+        }
+        
+        .soc-ig:hover {
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
+        }
+        
+        .soc-li:hover {
+            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
+        }
+        
+        .soc-wa:hover {
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        .soc-th:hover {
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+        }
+        
+        .soc-fb:hover {
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
+        }
+        
+        .soc-yt:hover {
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+        }
+        
+        footer {
+            background: var(--dark-2);
+            border-top: 1px solid rgba(42, 82, 232, 0.3);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--blue), var(--accent), var(--blue), transparent);
+        }
+        
+        .footer-bottom {
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .footer-bottom p {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+        }
+        
+        .footer-bottom span {
+            color: var(--blue-light);
+        }
+        /* ===== RESPONSIVE ===== */
+        
+        @media(max-width:1024px) {
+            .slide-card {
+                width: calc((100% - 1.5rem)/2);
+            }
+            .masonry-grid {
+                columns: 2;
+            }
+        }
+        
+        @media(max-width:700px) {
+            header {
+                padding: 0 1.5rem;
+            }
+            .gallery-hero,
+            .featured-section,
+            .all-section {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            .slider-viewport {
+                padding: 0 1.5rem;
+            }
+            .featured-header {
+                padding: 0 1.5rem;
+            }
+            .slide-card {
+                width: 80vw;
+            }
+            .masonry-grid {
+                columns: 1;
+            }
+            .lb-prev {
+                left: -44px;
+            }
+            .lb-next {
+                right: -44px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="header-left">
+            <img src="images/AG.png" alt="AG Electric Works" class="logo-img">
+            <div>
+                <div class="brand-name">AG Electric Works</div>
+                <div class="brand-sub">Licensed Electrical Contractors</div>
+            </div>
+        </a>
+        <a href="index.html" class="back-btn">&#8592; Back to Home</a>
+    </header>
+
+    <!-- HERO -->
+    <div class="gallery-hero">
+        <div class="hero-grid"></div>
+        <div class="bolt-deco bolt-1">⚡</div>
+        <div class="bolt-deco bolt-2">⚡</div>
+        <div class="hero-content">
+            <div class="section-label">Our Work</div>
+            <h1 class="hero-title">PROJECT<br><span class="highlight">GALLERY</span></h1>
+            <p class="hero-desc">Precision installations, engineered excellence — a visual record of every project we've powered across Pakistan.</p>
+        </div>
+    </div>
+
+    <div class="elec-divider"></div>
+
+    <!-- FEATURED SLIDER -->
+    <div class="featured-section">
+        <div class="featured-header">
+            <div>
+                <div class="section-label">Featured Projects</div>
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;color:var(--white);line-height:1;">RECENT COMPLETIONS</div>
+            </div>
+            <div class="slide-controls">
+                <button class="slide-btn" id="slidePrev">&#8592;</button>
+                <button class="slide-btn" id="slideNext">&#8594;</button>
+            </div>
+        </div>
+
+        <div class="slider-viewport">
+            <div class="slider-track" id="sliderTrack">
+
+                <div class="slide-card" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK">
+                    <div class="slide-card-img">
+                        <img src="images/CHOP CHOP WOK.jpeg" alt="Chop Chop Wok">
+                        <span class="slide-tag">DML</span>
+                        <span class="slide-year">2026</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">CHOP CHOP WOK</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 Second Floor Dolmen Mall Lahore</div>
+                        <div class="gp-item">⚡ Design: @coalescedesign</div>
+                        <div class="gp-item">📆 Completion: 2026</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/alkaramsite.jpeg" data-title="JS BANK PRIORITY BANKING">
+                    <div class="slide-card-img">
+                        <img src="images/alkaramsite.jpeg" alt="JS Bank">
+                        <span class="slide-tag">PESHAWAR</span>
+                        <span class="slide-year">2026</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">JS BANK PRIORITY BANKING</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 Phase-2 Hayatabad Peshawar</div>
+                        <div class="gp-item">⚡ Design: @najmibilgrami</div>
+                        <div class="gp-item">📆 Completion: 2026</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/WhatsApp Image 2026-06-09 at 12.33.11.jpeg" data-title="SALT BY IDEAS">
+                    <div class="slide-card-img">
+                        <img src="images/WhatsApp Image 2026-06-09 at 12.33.11.jpeg" alt="Salt by Ideas">
+                        <span class="slide-tag">DML</span>
+                        <span class="slide-year">2025</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">SALT BY IDEAS</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 Second Floor Dolmen Mall Lahore</div>
+                        <div class="gp-item">⚡ Architect: @coalescedesign</div>
+                        <div class="gp-item">📆 Completion: 2025</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/BANK ISLAMI.jpg" data-title="BANK ISLAMI">
+                    <div class="slide-card-img">
+                        <img src="images/BANK ISLAMI.jpg" alt="Bank Islami">
+                        <span class="slide-tag">CLIFTON</span>
+                        <span class="slide-year">2025</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">BANK ISLAMI</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 9th Floor Executive Tower Clifton KHI</div>
+                        <div class="gp-item">⚡ Architect: @coalescedesign</div>
+                        <div class="gp-item">📆 Completion: 2025</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/CALA.jpg" data-title="CALA">
+                    <div class="slide-card-img">
+                        <img src="images/CALA.jpg" alt="Cala">
+                        <span class="slide-tag">EMAAR</span>
+                        <span class="slide-year">2026</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">CALA</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 Coral Towers Emaar Karachi</div>
+                        <div class="gp-item">⚡ Design: @coheredesigns</div>
+                        <div class="gp-item">📆 Completion: 2026</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/BAHL.jpg" data-title="BANK AL HABIB LIMITED">
+                    <div class="slide-card-img">
+                        <img src="images/BAHL.jpg" alt="Bank Al Habib">
+                        <span class="slide-tag">BAHL</span>
+                        <span class="slide-year">2025</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">BANK AL HABIB LIMITED</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 21st Floor Centre Point KHI</div>
+                        <div class="gp-item">⚡ Design: @surround_architects</div>
+                        <div class="gp-item">📆 Completion: 2025</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/FUROR.jpg" data-title="FUROR BY EDENROBE">
+                    <div class="slide-card-img">
+                        <img src="images/FUROR.jpg" alt="Furor">
+                        <span class="slide-tag">DML</span>
+                        <span class="slide-year">2025</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">FUROR BY EDENROBE</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 Second Floor Dolmen Mall Lahore</div>
+                        <div class="gp-item">⚡ Fashion Brand</div>
+                        <div class="gp-item">📆 Completion: 2025</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/HERITAGE.jpg" data-title="HERITAGE JEWELLER">
+                    <div class="slide-card-img">
+                        <img src="images/HERITAGE.jpg" alt="Heritage">
+                        <span class="slide-tag">DML</span>
+                        <span class="slide-year">2025</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">HERITAGE JEWELLER</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 Second Floor Dolmen Mall Lahore</div>
+                        <div class="gp-item">⚡ Design: @surround_architects</div>
+                        <div class="gp-item">📆 Completion: 2025</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/JS BANK.jpg" data-title="JS BANK">
+                    <div class="slide-card-img">
+                        <img src="images/JS BANK.jpg" alt="JS Bank">
+                        <span class="slide-tag">KHI</span>
+                        <span class="slide-year">2025</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">JS BANK</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 13th Floor Shaheen Complex Saddar KHI</div>
+                        <div class="gp-item">⚡ Architect: @coalescedesign</div>
+                        <div class="gp-item">📆 Completion: 2025</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/nishat jinnah.jpg" data-title="NISHAT">
+                    <div class="slide-card-img">
+                        <img src="images/nishat jinnah.jpg" alt="Nishat">
+                        <span class="slide-tag">JIM</span>
+                        <span class="slide-year">2026</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">NISHAT</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 First Floor Jinnah Icon Mall</div>
+                        <div class="gp-item">⚡ Fashion Brand</div>
+                        <div class="gp-item">📆 Completion: 2026</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/edenrobe.jpg" data-title="EDENROBE">
+                    <div class="slide-card-img">
+                        <img src="images/edenrobe.jpg" alt="Edenrobe">
+                        <span class="slide-tag">DML</span>
+                        <span class="slide-year">2025</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">EDENROBE</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 Second Floor Dolmen Mall Lahore</div>
+                        <div class="gp-item">⚡ Design: Faheem Ud Din Memon</div>
+                        <div class="gp-item">📆 Completion: 2025</div>
+                    </div>
+                </div>
+
+                <div class="slide-card" data-img="images/alkaram.jpg" data-title="ALKARAM STUDIO">
+                    <div class="slide-card-img">
+                        <img src="images/alkaram.jpg" alt="Alkaram">
+                        <span class="slide-tag">DML</span>
+                        <span class="slide-year">2026</span>
+                    </div>
+                    <div class="slide-card-body">
+                        <div class="slide-card-title">ALKARAM STUDIO</div>
+                    </div>
+                    <div class="slide-card-info">
+                        <div class="gp-item">📍 First Floor Dolmen Mall Lahore</div>
+                        <div class="gp-item">⚡ Design: @coalescedesign</div>
+                        <div class="gp-item">📆 Completion: 2026</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <div class="elec-divider"></div>
+
+    <!-- ALL PROJECTS MASONRY -->
+    <div class="all-section">
+        <div class="all-header">
+            <div class="section-label">Complete Portfolio</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;color:var(--white);line-height:1;">CLICK</div>
+        </div>
+
+
+        <div class="masonry-grid" id="masonryGrid">
+
+
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0001.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0002.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0001.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0003.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0004.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0005.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0006.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0007.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0008.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0009.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0010.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0011.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0012.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0013.heic" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0001.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0002.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0003.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0004.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0005.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0006.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0007.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0008.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0009.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0010.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0011.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0012.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0013.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0014.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0015.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0016.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0017.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0018.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0019.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0020.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0021.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0022.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0023.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0024.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0025.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0026.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0027.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0028.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0029.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0030.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0031.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0032.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0033.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0034.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0035.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0036.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0037.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0038.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0039.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0040.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0041.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0042.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0043.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0044.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0045.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0046.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0047.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0048.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0049.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0050.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0051.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0052.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0053.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0054.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0055.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0056.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0057.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0058.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/ag_electric_-20260611-0059.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0002.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0003.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0005.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0007.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0006.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0008.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0009.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+            <div class="masonry-item" data-img="images/CHOP CHOP WOK.jpeg" data-title="CHOP CHOP WOK — Dolmen Mall Lahore">
+                <div class="masonry-img-wrap">
+                    <img class="masonry-img" src="GBInsta/saleemassociatespvtltd-20260611-0010.jpg" alt="Chop Chop Wok">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="images/AG.png" alt="AG Electric Works">
+                <p>Professional electrical contracting, built on precision, trust, and decades of engineering excellence across Pakistan.</p>
+                <div class="license-list">
+                    <div class="license-item"><strong>License KC-II</strong> No. 5089</div>
+                    <div class="license-item"><strong>NTN No.</strong> 7910906-5</div>
+                    <div class="license-item"><strong>P.E.C Reg.</strong> C5/30028</div>
+                    <div class="license-item"><strong>At Locate.</strong> Office Suite # 05, Ground Floor,Building # 9-C, Lane-5,Nishat Commercial Area Phase-6. D.H.A, Karachi, Pakistan 75500</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-heading">Quick Links</div>
+                <ul class="footer-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#features">Services</a></li>
+                    <li><a href="#brands">Partners</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-heading">Services</div>
+                <ul class="footer-links">
+                    <li><a href="#features">Industrial</a></li>
+                    <li><a href="#features">Commercial</a></li>
+                    <li><a href="#features">Distribution</a></li>
+                    <li><a href="#features">Lighting</a></li>
+                    <li><a href="#features">Maintenance</a></li>
+                    <li><a href="#features">Consultancy</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-heading">Contact</div>
+                <div class="contact-block">
+                    <div class="contact-item">
+                        <span class="contact-role">Chief Executive Officer</span>
+                        <span class="contact-name">Mr. Abdul Ghaffar</span>
+                        <span class="contact-phone">+92 333 2344492</span>
+                        <span class="contact-email">agelectricworks@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-role">Business Management Director</span>
+                        <span class="contact-name">Mr. Abdul Rahim</span>
+                        <span class="contact-phone">+92 310 2330061</span>
+                        <span class="contact-email">mrabdulrahimagelectric@gmail.com</span>
+                    </div>
+
+
+                    <div class="contact-item">
+                        <!-- Social Media div — Contact section ke neeche lagao -->
+                        <div class="footer-social-box">
+                            <div class="footer-social-heading">Follow Us</div>
+                            <div class="social-icons-row">
+
+                                <a href="https://www.instagram.com/ag_electric_?igsh=MXR1MzUxaG9vZHlncg==" target="_blank" class="soc-btn soc-ig" title="Instagram">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f09433"/>
+            <stop offset="25%" style="stop-color:#e6683c"/>
+            <stop offset="50%" style="stop-color:#dc2743"/>
+            <stop offset="75%" style="stop-color:#cc2366"/>
+            <stop offset="100%" style="stop-color:#bc1888"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#ig2)"/>
+        <circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="1.8"/>
+        <circle cx="17.2" cy="6.8" r="1.1" fill="white"/>
+      </svg>
+                                </a>
+
+                                <a href="https://wa.me/923332344492" target="_blank" class="soc-btn soc-wa" title="WhatsApp">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#25D366"/>
+        <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.2-.5 0-.2-.7-1.8-.9-2.4-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4C7.7 8 7 8.9 7 10.5s1.1 3.1 1.3 3.4c.2.2 2.2 3.4 5.4 4.6.8.3 1.4.5 1.8.6.8.2 1.5.2 2.1.1.6-.1 1.7-.7 2-1.4.2-.6.2-1.2.1-1.4-.1-.1-.3-.2-.6-.4z" fill="white"/>
+      </svg>
+                                </a>
+
+                                <a href="https://www.threads.net/@ag_electric_" target="_blank" class="soc-btn soc-th" title="Threads">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="https://www.threads.com/@ag_electric_">
+        <rect x="2" y="2" width="20" height="20" rx="6" fill="#000000"/>
+        <path d="M16.2 11.3c-.1-.1-.3-.1-.4-.2-.1-1.8-1.1-2.8-2.8-2.8-1 0-1.8.4-2.3 1.2l.9.6c.4-.5.9-.8 1.5-.8.9 0 1.5.5 1.7 1.4-.5-.1-.9-.1-1.4 0-1.5.1-2.5.9-2.4 2.1 0 .6.3 1.1.8 1.5.4.3.9.4 1.5.4 1.3 0 2.2-.7 2.5-1.9.1-.4.2-.9.2-1.3.2.1.4.3.5.4.4.5.6 1.1.6 1.8 0 1.8-1.5 3-3.8 3-2.5 0-4-1.6-4-4.2s1.5-4.2 4-4.2c1 0 1.9.3 2.6.8l.8-.9C15.5 7.4 14.3 7 12.7 7 9.6 7 7.6 9 7.6 12s2 5 5.1 5c2.7 0 4.7-1.6 4.7-4.1 0-.9-.3-1.7-.7-2.3l-.5-.3z" fill="white"/>
+      </svg>
+                                </a>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 <span>AG Electric Works</span>. All Rights Reserved.</p>
+            <p>Karachi, Pakistan &nbsp;|&nbsp; PEC Licensed &nbsp;|&nbsp; NTN Registered</p>
+        </div>
+    </footer>
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lb-inner">
+            <button class="lb-close" id="lbClose">✕</button>
+            <button class="lb-nav lb-prev" id="lbPrev">&#8592;</button>
+            <img class="lb-img" id="lbImg" src="" alt="">
+            <button class="lb-nav lb-next" id="lbNext">&#8594;</button>
+            <p class="lb-caption" id="lbCaption"></p>
+            <p class="lb-counter" id="lbCounter"></p>
+        </div>
+    </div>
+
+    <script>
+        // ===== SLIDER =====
+        const track = document.getElementById('sliderTrack');
+        const cards = Array.from(track.querySelectorAll('.slide-card'));
+        const dotsWrap = document.getElementById('sliderDots');
+        let visibleCount = window.innerWidth < 700 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+        let currentSlide = 0;
+        const totalSlides = cards.length - visibleCount + 1;
+
+        // Build dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsWrap.appendChild(dot);
+        }
+
+        function goToSlide(idx) {
+            currentSlide = Math.max(0, Math.min(idx, totalSlides - 1));
+            const cardW = cards[0].getBoundingClientRect().width + 24;
+            track.style.transform = `translateX(-${currentSlide * cardW}px)`;
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+        }
+
+        document.getElementById('slidePrev').addEventListener('click', () => goToSlide(currentSlide - 1));
+        document.getElementById('slideNext').addEventListener('click', () => goToSlide(currentSlide + 1));
+        window.addEventListener('resize', () => {
+            visibleCount = window.innerWidth < 700 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+            goToSlide(0);
+        });
+
+        // Auto-advance
+        setInterval(() => goToSlide(currentSlide < totalSlides - 1 ? currentSlide + 1 : 0), 4000);
+
+        // ===== LIGHTBOX =====
+        let allImgs = [];
+        let lbIndex = 0;
+
+        function buildLightboxList() {
+            allImgs = [];
+            document.querySelectorAll('.slide-card').forEach(c => {
+                allImgs.push({
+                    src: c.dataset.img,
+                    title: c.dataset.title
+                });
+            });
+            document.querySelectorAll('.masonry-item').forEach(c => {
+                allImgs.push({
+                    src: c.dataset.img,
+                    title: c.dataset.title
+                });
+            });
+        }
+        buildLightboxList();
+
+        function openLB(src, title) {
+            lbIndex = allImgs.findIndex(i => i.src === src);
+            document.getElementById('lbImg').src = src;
+            document.getElementById('lbCaption').textContent = title;
+            document.getElementById('lbCounter').textContent = (lbIndex + 1) + ' / ' + allImgs.length;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLB() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLB(dir) {
+            lbIndex = (lbIndex + dir + allImgs.length) % allImgs.length;
+            document.getElementById('lbImg').src = allImgs[lbIndex].src;
+            document.getElementById('lbCaption').textContent = allImgs[lbIndex].title;
+            document.getElementById('lbCounter').textContent = (lbIndex + 1) + ' / ' + allImgs.length;
+        }
+
+        document.getElementById('lbClose').addEventListener('click', closeLB);
+        document.getElementById('lightbox').addEventListener('click', e => {
+            if (e.target === document.getElementById('lightbox')) closeLB();
+        });
+        document.getElementById('lbPrev').addEventListener('click', () => navigateLB(-1));
+        document.getElementById('lbNext').addEventListener('click', () => navigateLB(1));
+        document.addEventListener('keydown', e => {
+            if (!document.getElementById('lightbox').classList.contains('open')) return;
+            if (e.key === 'Escape') closeLB();
+            if (e.key === 'ArrowLeft') navigateLB(-1);
+            if (e.key === 'ArrowRight') navigateLB(1);
+        });
+
+        // Attach click to all cards
+        document.querySelectorAll('.slide-card').forEach(c => {
+            c.addEventListener('click', () => openLB(c.dataset.img, c.dataset.title));
+        });
+        document.querySelectorAll('.masonry-item').forEach(c => {
+            c.addEventListener('click', () => openLB(c.dataset.img, c.dataset.title));
+        });
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        document.querySelectorAll('.masonry-item').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `opacity 0.5s ease ${(i%3)*0.1}s, transform 0.5s ease ${(i%3)*0.1}s, border-color 0.35s, box-shadow 0.35s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
